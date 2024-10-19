@@ -23,14 +23,27 @@ final public class EditorViewController: UIViewController {
   private lazy var canvasView = CanvasView()
   
   private lazy var undoButton: UIButton = {
-    let button = UIButton()
-    button.setTitle("Undo", for: .normal)
+    let button = UIButton(type: .system)
+    button.setTitle("Назад", for: .normal)
+    button.translatesAutoresizingMaskIntoConstraints = false
     button.addTarget(self, action: #selector(undoAction), for: .touchUpInside)
-    button.isEnabled = false
     button.setTitleColor(.darkGray, for: .disabled)
+    button.setTitleColor(.fromPalette(.text), for: .normal)
+    button.titleLabel?.font = .systemFont(ofSize: 17)
+    button.isEnabled = false
     return button
   }()
-  
+
+  private lazy var clearButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setTitle("Очистить", for: .normal)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.addTarget(self, action: #selector(clearAction), for: .touchUpInside)
+    button.setTitleColor(.fromPalette(.text), for: .normal)
+    button.titleLabel?.font = .systemFont(ofSize: 17)
+    return button
+  }()
+
   // MARK: - Init
   public init(
     image: UIImage?,
@@ -79,24 +92,18 @@ final public class EditorViewController: UIViewController {
         controller.view.leftAnchor.constraint(equalTo: view.leftAnchor),
         controller.view.rightAnchor.constraint(equalTo: view.rightAnchor),
         controller.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//        controller.view.heightAnchor.constraint(equalToConstant: 196),
         controller.view.topAnchor.constraint(equalTo: canvasView.bottomAnchor)
       ])
       addChild(controller)
       controller.didMove(toParent: self)
     }
-    
-    let clearButton = UIButton()
-    clearButton.setTitle("Clear", for: .normal)
-    clearButton.translatesAutoresizingMaskIntoConstraints = false
-    clearButton.addTarget(self, action: #selector(clearAction), for: .touchUpInside)
+
     view.addSubview(clearButton)
     NSLayoutConstraint.activate([
       clearButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       clearButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
     ])
-    
-    undoButton.translatesAutoresizingMaskIntoConstraints = false
+
     view.addSubview(undoButton)
     NSLayoutConstraint.activate([
       undoButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),

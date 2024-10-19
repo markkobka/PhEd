@@ -122,7 +122,7 @@ public final class ToolbarViewController: UIViewController {
   
   private func configureSwitchView() {
     mainView.switchView.configure(with: .init(items: [
-      .init(title: "Draw"),
+      .init(title: "Кисти 🖌️"),
     ]))
     mainView.switchView.delegate = self
   }
