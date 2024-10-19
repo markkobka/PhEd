@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
   name: "Modules",
   platforms: [
-    .iOS(.v13)
+    .iOS(.v14)
   ],
   products: [
     .library(
@@ -43,11 +43,6 @@ let package = Package(
       type: .static,
       targets: ["ToolbarFeature"]
     ),
-    .library(
-      name: "ColorPickerFeature",
-      type: .static,
-      targets: ["ColorPickerFeature"]
-    )
   ],
   dependencies: [
     .package(path: "Core"),
@@ -61,7 +56,6 @@ let package = Package(
         "WelcomeFeature",
         "PhotoPickerFeature",
         "EditorFeature",
-        "ColorPickerFeature",
         .product(
           name: "_Lottie",
           package: "Dependencies"
@@ -107,20 +101,10 @@ let package = Package(
       name: "ToolbarFeature",
       dependencies: [
         "Core",
-        "ColorPickerFeature",
         .product(
           name: "_Lottie",
           package: "Dependencies"
         )
-      ],
-      resources: [
-        .process("Resources")
-      ]
-    ),
-    .target(
-      name: "ColorPickerFeature",
-      dependencies: [
-        "Core"
       ],
       resources: [
         .process("Resources")

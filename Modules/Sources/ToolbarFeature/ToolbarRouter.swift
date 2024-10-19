@@ -1,6 +1,5 @@
 import UIKit
 import Core
-import ColorPickerFeature
 
 final class ToolbarRouter {
   
@@ -9,18 +8,11 @@ final class ToolbarRouter {
   init(rootController: UIViewController?) {
     self.rootController = rootController
   }
- 
-  @available(iOS 14.0, *)
+
   func presentColorPicker(_ delegate: UIColorPickerViewControllerDelegate) {
       let controller = UIColorPickerViewController()
       controller.delegate = delegate
       rootController?.present(controller, animated: true)
-  }
-
-  func presentColorPicker(_ delegate: ColorPickerViewControllerDelegate) {
-    let controller = ColorPickerViewController()
-    controller.delegate = delegate
-    rootController?.present(controller, animated: true)
   }
 
   func showNotImplementedAlert() {
@@ -29,5 +21,5 @@ final class ToolbarRouter {
       title: "Not implemented"
     )
   }
-  
+
 }

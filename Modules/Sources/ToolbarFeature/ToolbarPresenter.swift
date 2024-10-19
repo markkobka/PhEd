@@ -1,5 +1,4 @@
 import UIKit
-import ColorPickerFeature
 
 // MARK: - Output
 public protocol ToolbarDelegate: AnyObject {
@@ -205,11 +204,7 @@ extension ToolbarPresenter: ToolbarViewOutput {
   }
   
   func onTapColorPickerButton() {
-    if #available(iOS 14.0, *) {
-      router?.presentColorPicker(self as UIColorPickerViewControllerDelegate)
-    } else {
-      router?.presentColorPicker(self as ColorPickerViewControllerDelegate)
-    }
+    router?.presentColorPicker(self)
   }
   
   func onTapDownloadButton() {
@@ -292,26 +287,8 @@ extension ToolbarPresenter: Toolbar {
 
 // MARK: - UIColorPickerViewControllerDelegate
 
-@available(iOS 14.0, *)
 extension ToolbarPresenter: UIColorPickerViewControllerDelegate {
   func colorPickerViewController(_ viewController: UIColorPickerViewController, didSelect color: UIColor, continuously: Bool) {
-    state.tools[state.selectedIndex] = state.selectedTool.with(color: color)
-    reloadView()
-  }
-}
-
-// MARK: - ColorPickerViewControllerDelegate
-
-extension ToolbarPresenter: ColorPickerViewControllerDelegate {
-  func colorPickerViewControllerDidFinish(
-    _ viewController: ColorPickerViewController
-  ) {}
-  
-  func colorPickerViewController(
-    _ viewController: ColorPickerViewController,
-    didSelect color: UIColor,
-    continuously: Bool
-  ) {
     state.tools[state.selectedIndex] = state.selectedTool.with(color: color)
     reloadView()
   }
