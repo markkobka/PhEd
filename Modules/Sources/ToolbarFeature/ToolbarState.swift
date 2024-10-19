@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Maxim Timokhin on 13.10.2022.
-//
-
 import UIKit
 
 public struct ToolbarState {

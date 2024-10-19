@@ -1,10 +1,3 @@
-//
-//  VariantsPickerView.swift
-//  
-//
-//  Created by Maxim Timokhin on 14.10.2022.
-//
-
 import UIKit
 
 final class VariantsButton: UIControl {

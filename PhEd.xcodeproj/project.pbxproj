@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		200D40DA28F3423A00F1FEB8 /* TelegramContestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TelegramContestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200D40DA28F3423A00F1FEB8 /* PhEd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhEd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		200D40E628F3423B00F1FEB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		200D40E928F3423B00F1FEB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		200D40EB28F3423B00F1FEB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,7 +51,7 @@
 		200D40D128F3423A00F1FEB8 = {
 			isa = PBXGroup;
 			children = (
-				200D40DC28F3423A00F1FEB8 /* TelegramContestApp */,
+				200D40DC28F3423A00F1FEB8 /* PhEd */,
 				200D40DB28F3423A00F1FEB8 /* Products */,
 				200D40F428F3495900F1FEB8 /* Frameworks */,
 				200D40F328F348DC00F1FEB8 /* Modules */,
@@ -63,18 +63,18 @@
 		200D40DB28F3423A00F1FEB8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				200D40DA28F3423A00F1FEB8 /* TelegramContestApp.app */,
+				200D40DA28F3423A00F1FEB8 /* PhEd.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		200D40DC28F3423A00F1FEB8 /* TelegramContestApp */ = {
+		200D40DC28F3423A00F1FEB8 /* PhEd */ = {
 			isa = PBXGroup;
 			children = (
 				206B52B428F35ED7005105CA /* Resources */,
 				200D40F128F3467700F1FEB8 /* Application.swift */,
 			);
-			path = TelegramContestApp;
+			path = PhEd;
 			sourceTree = "<group>";
 		};
 		200D40F428F3495900F1FEB8 /* Frameworks */ = {
@@ -97,9 +97,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		200D40D928F3423A00F1FEB8 /* TelegramContestApp */ = {
+		200D40D928F3423A00F1FEB8 /* PhEd */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 200D40EE28F3423B00F1FEB8 /* Build configuration list for PBXNativeTarget "TelegramContestApp" */;
+			buildConfigurationList = 200D40EE28F3423B00F1FEB8 /* Build configuration list for PBXNativeTarget "PhEd" */;
 			buildPhases = (
 				200D40D628F3423A00F1FEB8 /* Sources */,
 				200D40D728F3423A00F1FEB8 /* Frameworks */,
@@ -112,7 +112,7 @@
 				206B52B128F35869005105CA /* PBXTargetDependency */,
 				200D40F828F3496000F1FEB8 /* PBXTargetDependency */,
 			);
-			name = TelegramContestApp;
+			name = PhEd;
 			packageProductDependencies = (
 				200D40F528F3495900F1FEB8 /* App */,
 				E1F111A72903EA7F000F46C1 /* CanvasFeature */,
@@ -122,8 +122,8 @@
 				E1F111AF2903EA80000F46C1 /* WelcomeFeature */,
 				E1A86AFD2903ECE40086DB4B /* Core */,
 			);
-			productName = TelegramContestApp;
-			productReference = 200D40DA28F3423A00F1FEB8 /* TelegramContestApp.app */;
+			productName = PhEd;
+			productReference = 200D40DA28F3423A00F1FEB8 /* PhEd.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -141,7 +141,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 200D40D528F3423A00F1FEB8 /* Build configuration list for PBXProject "TelegramContestApp" */;
+			buildConfigurationList = 200D40D528F3423A00F1FEB8 /* Build configuration list for PBXProject "PhEd" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -154,7 +154,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				200D40D928F3423A00F1FEB8 /* TelegramContestApp */,
+				200D40D928F3423A00F1FEB8 /* PhEd */,
 			);
 		};
 /* End PBXProject section */
@@ -334,23 +334,23 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MQ8YS44R7Z;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TelegramContestApp/Resources/Info.plist;
+				INFOPLIST_FILE = PhEd/Resources/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markkobka.coursew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markkobka.phed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -366,23 +366,23 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MQ8YS44R7Z;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TelegramContestApp/Resources/Info.plist;
+				INFOPLIST_FILE = PhEd/Resources/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.markkobka.coursew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.markkobka.phed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -392,7 +392,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		200D40D528F3423A00F1FEB8 /* Build configuration list for PBXProject "TelegramContestApp" */ = {
+		200D40D528F3423A00F1FEB8 /* Build configuration list for PBXProject "PhEd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				200D40EC28F3423B00F1FEB8 /* Debug */,
@@ -401,7 +401,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		200D40EE28F3423B00F1FEB8 /* Build configuration list for PBXNativeTarget "TelegramContestApp" */ = {
+		200D40EE28F3423B00F1FEB8 /* Build configuration list for PBXNativeTarget "PhEd" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				200D40EF28F3423B00F1FEB8 /* Debug */,

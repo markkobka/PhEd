@@ -1,10 +1,3 @@
-//
-//  BlurInk.swift
-//
-//
-//  Created by Maxim Timokhin on 29.10.2022.
-//
-
 import Foundation
 import MetalKit
 import Alloy

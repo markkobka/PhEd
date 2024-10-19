@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Maxim Timokhin on 22.10.2022.
-//
-
 import CoreGraphics
 
 func easing(to: CGFloat, time: CGFloat, curve: EasingCurve = .linear) -> CGFloat {
@@ -16,20 +9,19 @@ func easing(to: CGFloat, time: CGFloat, curve: EasingCurve = .linear) -> CGFloat
 }
 
 enum EasingCurve {
-  
+
   case linear
   case easeInOutCubic
   case easeOutCirc
-  
+
   func compute(_ t: CGFloat) -> CGFloat {
     switch self {
     case .linear:
       return t
     case .easeInOutCubic:
-      return t < 0.5 ? 4 * t * t * t : 1 - pow(-2 * t + 2, 3) / 2
+      return t < 0.5 ? 4 * pow(t, 3) : 1 - pow(-2 * t + 2, 3) / 2
     case .easeOutCirc:
       return sqrt(1 - pow(t - 1, 2))
     }
   }
-  
 }

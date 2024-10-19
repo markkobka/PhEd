@@ -1,10 +1,3 @@
-//
-//  File.swift
-//
-//
-//  Created by Maxim Timokhin on 19.10.2022.
-//
-
 import CoreGraphics
 
 final class LerpTransformer: Transforming {

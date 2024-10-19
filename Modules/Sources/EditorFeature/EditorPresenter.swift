@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Maxim Timokhin on 16.10.2022.
-//
-
 import Foundation
 import ToolbarFeature
 import CanvasFeature

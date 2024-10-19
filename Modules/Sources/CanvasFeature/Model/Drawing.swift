@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  
-//
-//  Created by Maxim Timokhin on 25.10.2022.
-//
-
 import CoreGraphics
 
 public struct Drawing {

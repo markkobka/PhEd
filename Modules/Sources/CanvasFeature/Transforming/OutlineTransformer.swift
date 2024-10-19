@@ -36,7 +36,6 @@ final class OutlineTransformer: Transforming {
           speed.append(prevPoint.speed(to: curPoint) / 10000)
         }
       }
-      
       speed = smooth(speed, ratio: 0.5)
       let endTime = stroke.points.last?.time ?? 0
       for index in 0..<(stroke.points.count - 1) {
@@ -50,7 +49,7 @@ final class OutlineTransformer: Transforming {
           continue
         }
         let point = stroke.points[index]
-        let prevPoint = stroke.points[index-1]
+        let prevPoint = stroke.points[index - 1]
         let nextPoint = stroke.points[index + 1]
         let dir = point.distance(to: nextPoint)
         
