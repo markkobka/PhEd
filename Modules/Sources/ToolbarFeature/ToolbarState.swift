@@ -5,16 +5,12 @@ public struct ToolbarState {
   public var mode: Mode
   public var selectedIndex: Int
   
-  public var shapes: [Shape]
-  
   public init(
     tools: [Tool],
-    shapes: [Shape],
     mode: Mode,
     selectedIndex: Int = 0
   ) {
     self.tools = tools
-    self.shapes = shapes
     self.mode = mode
     self.selectedIndex = selectedIndex
   }
@@ -59,7 +55,6 @@ public extension ToolbarState {
           maxStrokeSize: 72
         ),
       ],
-      shapes: [.rectangle, .ellipse, .bubble, .star, .arrow],
       mode: .drawing
     )
   }
@@ -84,14 +79,6 @@ public extension ToolbarState {
   enum Mode {
     case drawing
     case adjusting
-  }
-  
-  enum Shape {
-    case rectangle
-    case ellipse
-    case bubble
-    case star
-    case arrow
   }
 
   struct Tool {

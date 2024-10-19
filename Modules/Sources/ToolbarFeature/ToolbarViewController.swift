@@ -32,13 +32,10 @@ protocol ToolbarViewInput: AnyObject {
   func setBackItem(_ item: BackItem)
   func setRightItem(_ item: RightItem)
   func setTopControlsVisible(_ visible: Bool)
-  func setAddButtonVisible(_ visible: Bool)
-  func showShapePicker(shapes: [ShapeViewModel])
   func showVariantsPicker(variants: [VariantViewModel])
   func successHapticFeedback()
   func failHapticFeedback()
 }
-
 
 // MARK: - View output
 protocol ToolbarViewOutput: AnyObject {
@@ -49,9 +46,7 @@ protocol ToolbarViewOutput: AnyObject {
   func onAdjust(strokeSize: CGFloat)
   func onBackButtonTapped()
   func onSelectVariant(at index: Int)
-  func onAddShape(at index: Int)
   func onTapVariantButton()
-  func onTapAddShapeButton()
   func onTapColorPickerButton()
   func onTapDownloadButton()
 }
@@ -104,7 +99,6 @@ public final class ToolbarViewController: UIViewController {
     configureSwitchView()
     configureBackButton()
     configureVariantsButton()
-    configureAddButton()
     configureColorPickerButton()
     configureDownloadButton()
     output.onViewDidLoad()
@@ -124,10 +118,6 @@ public final class ToolbarViewController: UIViewController {
   
   private func configureVariantsButton() {
     mainView.variantsButton.addTarget(self, action: #selector(variantsButtonAction), for: .touchUpInside)
-  }
-  
-  private func configureAddButton() {
-    mainView.addButton.addTarget(self, action: #selector(addButtonAction), for: .touchUpInside)
   }
   
   private func configureSwitchView() {
@@ -151,10 +141,6 @@ public final class ToolbarViewController: UIViewController {
   
   @objc private func variantsButtonAction() {
     output.onTapVariantButton()
-  }
-  
-  @objc private func addButtonAction() {
-    output.onTapAddShapeButton()
   }
     
   @objc private func colorPickerAction() {
@@ -263,24 +249,7 @@ extension ToolbarViewController: ToolbarViewInput {
   func setTopControlsVisible(_ visible: Bool) {
     mainView.apply {
       $0.colorPickerButton.isHidden = !visible
-      $0.addButton.isHidden = !visible
     }
-  }
-
-  func setAddButtonVisible(_ visible: Bool) {
-    mainView.addButton.isHidden = !visible
-  }
-  
-  func showShapePicker(shapes: [ShapeViewModel]) {
-    let actionController = ActionsViewController(
-      actions: shapes.enumerated().map { index, shape in
-        .init(title: shape.title, image: shape.icon) { [weak self] in
-          self?.output.onAddShape(at: index)
-        }
-      },
-      sourceView: mainView.addButton
-    )
-    present(actionController, animated: true)
   }
 
   func showVariantsPicker(variants: [VariantViewModel]) {

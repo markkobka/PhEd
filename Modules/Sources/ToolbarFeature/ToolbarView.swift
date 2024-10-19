@@ -16,15 +16,6 @@ final class ToolbarView: UIView {
     button.tintColor = .fromPalette(.text)
     return button
   }()
-
-  private(set) lazy var addButton:  BlurButton = {
-    let button = BlurButton()
-    button.image = UIImage(named: "add", in: .module, with: nil)?.withRenderingMode(.alwaysTemplate)
-    button.layer.cornerRadius = 17
-    button.layer.masksToBounds = true
-    button.tintColor = .fromPalette(.text)
-    return button
-  }()
   
   private(set) lazy var colorPickerButton = ColorPickerButton()
   
@@ -107,15 +98,6 @@ final class ToolbarView: UIView {
       variantsButton.leftAnchor.constraint(equalTo: adjustView.rightAnchor, constant: 12),
       variantsButton.centerYAnchor.constraint(equalTo: switchView.centerYAnchor),
       variantsButton.heightAnchor.constraint(equalToConstant: 34),
-    ])
-    
-    addSubview(addButton)
-    addButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      addButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -8),
-      addButton.bottomAnchor.constraint(equalTo: downloadButton.topAnchor, constant: -16),
-      addButton.widthAnchor.constraint(equalToConstant: 34),
-      addButton.heightAnchor.constraint(equalToConstant: 34),
     ])
    
     addSubview(colorPickerButton)

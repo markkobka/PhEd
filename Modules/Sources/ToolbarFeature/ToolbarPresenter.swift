@@ -12,7 +12,6 @@ public protocol ToolbarDelegate: AnyObject {
 public protocol Toolbar: AnyObject {
   var mode: ToolbarState.Mode { get }
   var tools: [ToolbarState.Tool] { get }
-  var shapes: [ToolbarState.Shape] { get }
   
   var selectedTool: ToolbarState.Tool { get set }
   var color: UIColor? { get set }
@@ -45,8 +44,6 @@ final class ToolbarPresenter: NSObject {
     state.color.map {
       view?.setPickedColor($0)
     }
-    
-    view?.setAddButtonVisible(!state.shapes.isEmpty)
               
     switch state.mode {
     case .drawing:
@@ -98,9 +95,6 @@ extension ToolbarPresenter: ToolbarViewOutput {
       }
     case .adjusting:
       state.mode = .drawing
-    default:
-      //do nothing
-      break
     }
     
     state.selectedIndex = index
@@ -143,19 +137,10 @@ extension ToolbarPresenter: ToolbarViewOutput {
     reloadView()
   }
   
-  func onAddShape(at index: Int) {
-    router?.showNotImplementedAlert()
-    view?.failHapticFeedback()
-  }
-  
   func onTapVariantButton() {
     if !state.selectedTool.variants.isEmpty {
       view?.showVariantsPicker(variants: state.selectedTool.variants)
     }
-  }
-  
-  func onTapAddShapeButton() {
-    view?.showShapePicker(shapes: state.shapes)
   }
   
   func onTapColorPickerButton() {
@@ -176,10 +161,6 @@ extension ToolbarPresenter: Toolbar {
   
   var tools: [ToolbarState.Tool] {
     state.tools
-  }
-  
-  var shapes: [ToolbarState.Shape] {
-    state.shapes
   }
   
   var selectedTool: ToolbarState.Tool {
