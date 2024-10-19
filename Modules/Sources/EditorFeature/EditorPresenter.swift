@@ -1,7 +1,6 @@
 import Foundation
 import ToolbarFeature
 import CanvasFeature
-import TextEditFeature
 import UIKit
 
 public protocol Editor: AnyObject {
@@ -43,11 +42,6 @@ extension EditorPresenter: ToolbarDelegate {
     let strokeSize = toolbarTool.strokeSize
     
     let tipType: TipType = toolbarTool.variant == .arrow ? .arrow : .default
-    
-    view?.setTextAlignment(toolbar.font.alignment)
-    view?.setTextColor(toolbar.color ?? .white)
-    view?.setFontStyle(toolbar.font.style.textStyle)
-    view?.setTextEditVisible(toolbar.mode == .texting)
     
     switch toolbarTool.tool {
     case .brush:
@@ -96,20 +90,5 @@ extension EditorPresenter: ToolbarDelegate {
       guard let image = view?.getImage()
       else { return }
       delegate?.editor(self, didFinishWith: image)
-  }
-}
-
-extension ToolbarState.Font.Style {
-  var textStyle: TextEditView.FontStyle {
-    switch self {
-    case .default:
-      return .default
-    case .filled:
-      return .filled
-    case .semi:
-      return .semi
-    case .stroke:
-      return .stroke
-    }
   }
 }

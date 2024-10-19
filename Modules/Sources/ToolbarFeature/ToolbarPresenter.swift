@@ -18,7 +18,6 @@ public protocol Toolbar: AnyObject {
   var color: UIColor? { get set }
   var strokeSize: CGFloat { get set }
   var variant: ToolbarState.Tool.Variant { get set }
-  var font: ToolbarState.Font { get set }
 }
 
 final class ToolbarPresenter: NSObject {
@@ -42,12 +41,7 @@ final class ToolbarPresenter: NSObject {
   private func reloadView() {
     
     view?.updateToolbar(item: state.selectedTool, at: state.selectedIndex)
-    
-    view?.setText(
-      style: .init(state.font),
-      alignment: .init(state.font)
-    )
-    
+
     state.color.map {
       view?.setPickedColor($0)
     }
@@ -76,14 +70,8 @@ final class ToolbarPresenter: NSObject {
         allVariants: state.selectedTool.variants
       ))
       view?.setCenterItem(.toolBar)
-    case .texting:
-      view?.setTopControlsVisible(true)
-      view?.setBottomItem(.switchControl(selectedIndex: 1))
-      view?.setBackItem(.cancel)
-      view?.setCenterItem(.textBar)
     }
   }
-  
 }
 
 // MARK: - EditorViewOutput
@@ -94,7 +82,7 @@ extension ToolbarPresenter: ToolbarViewOutput {
   }
   
   func onTapTool(at index: Int) {
-    
+
     if [2, 4].contains(index) {
       view?.failHapticFeedback()
       router?.showNotImplementedAlert()
@@ -120,34 +108,6 @@ extension ToolbarPresenter: ToolbarViewOutput {
     reloadView()
   }
 
-  func onTapTextAlignmentButton() {
-    switch state.font.alignment {
-    case .left:
-      state.font = state.font.with(alignment: .right)
-    case .right:
-      state.font = state.font.with(alignment: .center)
-    case .center:
-      state.font = state.font.with(alignment: .left)
-    default:
-      state.font = state.font.with(alignment: .left)
-    }
-    reloadView()
-  }
-  
-  func onTapTextStyleButton() {
-    switch state.font.style {
-    case .default:
-      state.font = state.font.with(style: .filled)
-    case .filled:
-      state.font = state.font.with(style: .semi)
-    case .semi:
-      state.font = state.font.with(style: .stroke)
-    case .stroke:
-      state.font = state.font.with(style: .default)
-    }
-    reloadView()
-  }
-  
   func onViewDidAppear() {
     view?.setupToolbar(items: state.tools)
     reloadView()
@@ -158,11 +118,6 @@ extension ToolbarPresenter: ToolbarViewOutput {
     reloadView()
   }
   
-  func onSwitchToText() {    
-    state.mode = .texting
-    reloadView()
-  }
-  
   func onAdjust(strokeSize: CGFloat) {
     state.tools[state.selectedIndex] = state.selectedTool.with(strokeSize: strokeSize)
     reloadView()
@@ -170,7 +125,7 @@ extension ToolbarPresenter: ToolbarViewOutput {
   
   func onBackButtonTapped() {
     switch state.mode {
-    case .drawing, .texting:
+    case .drawing:
       delegate?.toolbarDidTapCancelButton(self)
     case .adjusting:
       state.mode = .drawing
@@ -268,22 +223,7 @@ extension ToolbarPresenter: Toolbar {
       reloadView()
     }
   }
-  
-  var font: ToolbarState.Font {
-    get {
-      state.font
-    }
-    set {
-      state.font = newValue
-      view?.updateToolbar(item: state.selectedTool, at: state.selectedIndex)
-      reloadView()
-    }
-  }
-  
- 
 }
-
-
 
 // MARK: - UIColorPickerViewControllerDelegate
 

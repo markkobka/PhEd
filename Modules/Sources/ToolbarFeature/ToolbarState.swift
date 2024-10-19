@@ -5,28 +5,20 @@ public struct ToolbarState {
   public var mode: Mode
   public var selectedIndex: Int
   
-  public var font: Font
-  
   public var shapes: [Shape]
   
   public init(
     tools: [Tool],
-    font: Font,
     shapes: [Shape],
     mode: Mode,
     selectedIndex: Int = 0
   ) {
     self.tools = tools
-    self.font = font
     self.shapes = shapes
     self.mode = mode
     self.selectedIndex = selectedIndex
   }
-  
-
 }
-
-
 // MARK: - Initial state
 public extension ToolbarState {
   static var `default`: Self {
@@ -67,7 +59,6 @@ public extension ToolbarState {
           maxStrokeSize: 72
         ),
       ],
-      font: .init(style: .default, alignment: .left),
       shapes: [.rectangle, .ellipse, .bubble, .star, .arrow],
       mode: .drawing
     )
@@ -84,9 +75,7 @@ public extension ToolbarState {
   var color: UIColor? {
     tools[selectedIndex].color
   }
-  
 }
-
 
 // MARK: - Nested types
 
@@ -95,29 +84,7 @@ public extension ToolbarState {
   enum Mode {
     case drawing
     case adjusting
-    case texting
   }
- 
-  struct Font {
-    
-    public let style: Style
-    public let alignment: NSTextAlignment
-        
-    public enum Style {
-      case `default`
-      case filled
-      case semi
-      case stroke
-    }
-    
-    func with(style: Style? = nil, alignment: NSTextAlignment? = nil) -> Self {
-      .init(
-        style: style ?? self.style,
-        alignment: alignment ?? self.alignment
-      )
-    }
-  }
-  
   
   enum Shape {
     case rectangle
@@ -137,7 +104,15 @@ public extension ToolbarState {
     public let minStrokeSize: CGFloat
     public let maxStrokeSize: CGFloat
 
-    public init(tool: Tool, variant: Variant = .round, variants: [Variant] = [], color: UIColor? = nil, strokeSize: CGFloat = 24, minStrokeSize: CGFloat = 4, maxStrokeSize: CGFloat = 48) {
+    public init(
+      tool: Tool,
+      variant: Variant = .round,
+      variants: [Variant] = [],
+      color: UIColor? = nil,
+      strokeSize: CGFloat = 24,
+      minStrokeSize: CGFloat = 4,
+      maxStrokeSize: CGFloat = 48
+    ) {
       self.tool = tool
       self.variant = variant
       self.variants = variants

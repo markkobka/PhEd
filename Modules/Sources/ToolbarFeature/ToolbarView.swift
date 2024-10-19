@@ -3,7 +3,6 @@ import Lottie
 
 final class ToolbarView: UIView {
   private(set) lazy var toolsView = ToolsView()
-  private(set) lazy var textBarView = TextBarView()
   private(set) lazy var switchView = SwitchView()
   private(set) lazy var adjustView = AdjustView()
   private(set) lazy var backButton = BackButton()
@@ -44,7 +43,6 @@ final class ToolbarView: UIView {
   // MARK: - Setup view
   private func setup() {
     toolsView.isHidden = true
-    textBarView.isHidden = true
     adjustView.isHidden = true
         
     adjustView.isHidden = true
@@ -66,21 +64,12 @@ final class ToolbarView: UIView {
       toolsView.heightAnchor.constraint(equalToConstant: 110)
     ])
     
-    addSubview(textBarView)
-    textBarView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      textBarView.leftAnchor.constraint(equalTo: leftAnchor, constant: 60),
-      textBarView.rightAnchor.constraint(equalTo: rightAnchor, constant: -60),
-      textBarView.heightAnchor.constraint(equalToConstant: 34)
-    ])
-    
     addSubview(switchView)
     switchView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       switchView.leftAnchor.constraint(equalTo: leftAnchor, constant: 60),
       switchView.rightAnchor.constraint(equalTo: rightAnchor, constant: -60),
       switchView.topAnchor.constraint(equalTo: toolsView.bottomAnchor),
-      switchView.topAnchor.constraint(equalTo: textBarView.bottomAnchor, constant: 14),
       switchView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8)
     ])
             

@@ -1,18 +1,12 @@
 import UIKit
 import ToolbarFeature
 import CanvasFeature
-import TextEditFeature
 
 // MARK: - View input
 protocol EditorViewInput: AnyObject {
   func setTool(_ tool: CanvasFeature.DrawingStyle)
   func setImage(_ image: UIImage?)
   func getImage() -> CGImage?
-  func setTextColor(_ color: UIColor)
-  func setTextAlignment(_ alignment: NSTextAlignment)
-  func setFontStyle(_ style: TextEditView.FontStyle)
-  func setTextEditVisible(_ visible: Bool)
-  var textView: UIView { get }
 }
 
 // MARK: - View output
@@ -27,8 +21,6 @@ final public class EditorViewController: UIViewController {
   private let toolbarController: UIViewController?
   
   private lazy var canvasView = CanvasView()
-  
-  private lazy var textEditView = TextEditView()
   
   private lazy var undoButton: UIButton = {
     let button = UIButton()
@@ -78,16 +70,6 @@ final public class EditorViewController: UIViewController {
       )
     ])
     
-    textEditView.translatesAutoresizingMaskIntoConstraints = false
-    view.addSubview(textEditView)
-    NSLayoutConstraint.activate([
-      textEditView.topAnchor.constraint(equalTo: canvasView.topAnchor),
-      textEditView.rightAnchor.constraint(equalTo: canvasView.rightAnchor),
-      textEditView.bottomAnchor.constraint(equalTo: canvasView.bottomAnchor),
-      textEditView.leftAnchor.constraint(equalTo: canvasView.leftAnchor),
-    ])
-
-    
     toolbarController.map { controller in
       controller.willMove(toParent: self)
       view.addSubview(controller.view)
@@ -135,32 +117,6 @@ final public class EditorViewController: UIViewController {
 
 // MARK: - EditorViewInput
 extension EditorViewController: EditorViewInput {
-  var textView: UIView {
-    textEditView
-  }
-  
-  func setTextEditVisible(_ visible: Bool) {
-    if visible, textEditView.isUserInteractionEnabled == false {
-      textEditView.isUserInteractionEnabled = true
-      _ = textEditView.becomeFirstResponder()
-    } else if !visible, textEditView.isUserInteractionEnabled == true {
-      textEditView.endEditing(true)
-      textEditView.isUserInteractionEnabled = false
-    }
-  }
-  
-  func setFontStyle(_ style: TextEditFeature.TextEditView.FontStyle) {
-    textEditView.fontStyle = style
-  }
-  
-  func setTextAlignment(_ alignment: NSTextAlignment) {
-    textEditView.textAlignment = alignment
-  }
-  
-  func setTextColor(_ color: UIColor) {
-    textEditView.textColor = color
-  }
-  
   func getImage() -> CGImage? {
     canvasView.getImage()
   }

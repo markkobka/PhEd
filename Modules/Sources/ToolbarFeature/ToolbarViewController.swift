@@ -32,7 +32,6 @@ protocol ToolbarViewInput: AnyObject {
   func setBackItem(_ item: BackItem)
   func setRightItem(_ item: RightItem)
   func setTopControlsVisible(_ visible: Bool)
-  func setText(style: TextStyleButtonViewModel, alignment: TextAlignmentButtonViewModel)
   func setAddButtonVisible(_ visible: Bool)
   func showShapePicker(shapes: [ShapeViewModel])
   func showVariantsPicker(variants: [VariantViewModel])
@@ -47,12 +46,9 @@ protocol ToolbarViewOutput: AnyObject {
   func onViewDidAppear()
   func onTapTool(at index: Int)
   func onSwitchToDrawing()
-  func onSwitchToText()
   func onAdjust(strokeSize: CGFloat)
   func onBackButtonTapped()
   func onSelectVariant(at index: Int)
-  func onTapTextAlignmentButton()
-  func onTapTextStyleButton()
   func onAddShape(at index: Int)
   func onTapVariantButton()
   func onTapAddShapeButton()
@@ -109,7 +105,6 @@ public final class ToolbarViewController: UIViewController {
     configureBackButton()
     configureVariantsButton()
     configureAddButton()
-    configureTextBar()
     configureColorPickerButton()
     configureDownloadButton()
     output.onViewDidLoad()
@@ -138,7 +133,6 @@ public final class ToolbarViewController: UIViewController {
   private func configureSwitchView() {
     mainView.switchView.configure(with: .init(items: [
       .init(title: "Draw"),
-      .init(title: "Text"),
     ]))
     mainView.switchView.delegate = self
   }
@@ -147,14 +141,6 @@ public final class ToolbarViewController: UIViewController {
     mainView.backButton.configure(with: .init(onTap: { [weak self] in
       self?.output.onBackButtonTapped()
     }))
-  }
-  
-  private func configureTextBar() {
-    mainView.textBarView.configure(with: .init(
-      style: .default,
-      alignment: .left
-    ))
-    mainView.textBarView.delegate = self
   }
   
   private func configureColorPickerButton() {
@@ -197,11 +183,9 @@ extension ToolbarViewController: ToolbarViewInput {
     switch item {
     case .toolBar:
       mainView.toolsView.isHidden = false
-      mainView.textBarView.isHidden = true
       mainView.switchView.selectionIndex = 0
     case .textBar:
       mainView.toolsView.isHidden = true
-      mainView.textBarView.isHidden = false
       mainView.switchView.selectionIndex = 1
     }
   }
@@ -282,11 +266,7 @@ extension ToolbarViewController: ToolbarViewInput {
       $0.addButton.isHidden = !visible
     }
   }
-  
-  func setText(style: TextStyleButtonViewModel, alignment: TextAlignmentButtonViewModel) {    
-    mainView.textBarView.configure(with: .init(style: style, alignment: alignment))
-  }
-  
+
   func setAddButtonVisible(_ visible: Bool) {
     mainView.addButton.isHidden = !visible
   }
@@ -302,7 +282,7 @@ extension ToolbarViewController: ToolbarViewInput {
     )
     present(actionController, animated: true)
   }
-  
+
   func showVariantsPicker(variants: [VariantViewModel]) {
     let actionController = ActionsViewController(
       actions: variants.enumerated().map { index, variant in
@@ -314,9 +294,7 @@ extension ToolbarViewController: ToolbarViewInput {
     )
     present(actionController, animated: true)
   }
-  
 }
-
 
 // MARK: - ToolsViewDelegate
 extension ToolbarViewController: ToolsViewDelegate {
@@ -325,25 +303,10 @@ extension ToolbarViewController: ToolsViewDelegate {
   }
 }
 
-// MARK: - TextBarDelegate
-extension ToolbarViewController: TextBarDelegate {
-  func textBarDidTapStyleButton(_ textBar: TextBarView) {
-    output.onTapTextStyleButton()
-  }
-  
-  func textBarDidTapAlignmentButton(_ textBar: TextBarView) {
-    output.onTapTextAlignmentButton()
-  }
-}
-
 // MARK: - SwitchViewDelegate
 extension ToolbarViewController: SwitchViewDelegate {
   func switchView(_ switchView: SwitchView, didSwitchedTo index: Int) {
-    if index == 0 {
-      output.onSwitchToDrawing()
-    } else {
-      output.onSwitchToText()
-    }
+    output.onSwitchToDrawing()
   }
 }
 

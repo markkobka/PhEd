@@ -34,11 +34,6 @@ let package = Package(
       targets: ["CanvasFeature"]
     ),
     .library(
-      name: "TextEditFeature",
-      type: .static,
-      targets: ["TextEditFeature"]
-    ),
-    .library(
       name: "ToolbarFeature",
       type: .static,
       targets: ["ToolbarFeature"]
@@ -90,7 +85,6 @@ let package = Package(
         "Core",
         "ToolbarFeature",
         "CanvasFeature",
-        "TextEditFeature",
         .product(
           name: "_Lottie",
           package: "Dependencies"
@@ -118,12 +112,6 @@ let package = Package(
           name: "_Alloy",
           package: "Dependencies"
         )
-      ]
-    ),
-    .target(
-      name: "TextEditFeature",
-      dependencies: [
-        "Core",
       ]
     ),
   ]
