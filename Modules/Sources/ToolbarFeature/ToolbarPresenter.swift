@@ -79,13 +79,6 @@ extension ToolbarPresenter: ToolbarViewOutput {
   }
   
   func onTapTool(at index: Int) {
-
-    if [2, 4].contains(index) {
-      view?.failHapticFeedback()
-      router?.showNotImplementedAlert()
-      return
-    }
-
     switch state.mode {
     case .drawing:
       if index == state.selectedIndex {

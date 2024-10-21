@@ -21,7 +21,7 @@ public extension ToolbarState {
     .init(
       tools: [
         .init(
-          tool: .brush,
+          tool: .pen,
           variant: .round,
           variants: [.round, .arrow],
           color: .white,
@@ -33,24 +33,24 @@ public extension ToolbarState {
           color: .blue,
           strokeSize: 10
         ),
-        .init(
-          tool: .neon,
-          variant: .round,
-          variants: [.round, .arrow],
-          color: .red,
-          strokeSize: 10
-        ),
+//        .init(
+//          tool: .neon,
+//          variant: .round,
+//          variants: [.round, .arrow],
+//          color: .red,
+//          strokeSize: 10
+//        ),
         .init(
           tool: .pencil,
           variant: .round,
           color: .green,
           strokeSize: 10
         ),
-        .init(tool: .lasso),
+//        .init(tool: .lasso),
         .init(
           tool: .eraser,
           variant: .eraser,
-          variants: [.eraser, .object, .blur],
+          variants: [.eraser, .blur],
           strokeSize: 72,
           maxStrokeSize: 72
         ),
@@ -110,11 +110,9 @@ public extension ToolbarState {
     }
     
     public enum Tool {
-      case brush
+      case pen
       case pencil
       case marker
-      case neon
-      case lasso
       case eraser
     }
     
@@ -123,7 +121,6 @@ public extension ToolbarState {
       case arrow
       case eraser
       case blur
-      case object
     }
     
     func with(variant: Variant? = nil, color: UIColor? = nil, strokeSize: CGFloat? = nil) -> Self {

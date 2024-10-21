@@ -52,7 +52,7 @@ public final class CanvasView: UIView {
   
   private var imageTexture: MTLTexture?
   private var drawingTexture: MTLTexture?
-  
+
   private var renderState: MTLRenderPipelineState?
   
   // MARK: - Init
@@ -250,7 +250,6 @@ public final class CanvasView: UIView {
     }
     
     self.geometryTransform = TransformChain([
-      LineTransformer(),
       TipTransformer(tip: drawingStyle.tipType == .arrow ? .arrow : .default)
     ])
     
@@ -508,10 +507,8 @@ extension CanvasView: MTKViewDelegate {
 
 
 extension CanvasView {
-  
   struct Item {
     let drawingStyle: DrawingStyle
     let drawing: Drawing
   }
-  
 }

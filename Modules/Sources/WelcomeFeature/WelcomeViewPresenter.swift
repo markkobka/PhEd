@@ -23,9 +23,9 @@ final class WelcomePresenter {
     return readWriteStatus
   }
 
-  private let notDeterminedTitle = "Allow access"
-  private let deniedTitle = "Open settings"
-  private let authorizedTitle = "Finish"
+  private let notDeterminedTitle = "Дать доступ"
+  private let deniedTitle = "Открыть настройки"
+  private let authorizedTitle = "Финиш"
 
   private var currentTitle: String {
     switch currentStatus {

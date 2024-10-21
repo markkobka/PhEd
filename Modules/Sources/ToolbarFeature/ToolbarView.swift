@@ -93,7 +93,7 @@ final class ToolbarView: UIView {
     addSubview(variantsButton)
     variantsButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      variantsButton.widthAnchor.constraint(equalToConstant: 80),
+      variantsButton.widthAnchor.constraint(equalToConstant: 90),
       variantsButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -8),
       variantsButton.leftAnchor.constraint(equalTo: adjustView.rightAnchor, constant: 12),
       variantsButton.centerYAnchor.constraint(equalTo: switchView.centerYAnchor),

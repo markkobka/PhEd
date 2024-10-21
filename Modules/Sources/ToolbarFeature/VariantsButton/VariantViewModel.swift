@@ -11,15 +11,13 @@ extension ToolbarState.Tool.Variant: VariantViewModel {
   var title: String {
     switch self {
     case .round:
-      return "Round"
+      return "Круг"
     case .arrow:
-      return "Arrow"
+      return "Стрела"
     case .blur:
-      return "Blur"
-    case .object:
-      return "Object"
+      return "Блюр"
     case .eraser:
-      return "Eraser"
+      return "Ластик"
     }
   }
   
@@ -31,9 +29,6 @@ extension ToolbarState.Tool.Variant: VariantViewModel {
       return UIImage(named: "arrowTip", in: .module, with: nil)
     case .blur:
       return UIImage(named: "blurTip", in: .module, with: nil)
-    case .object:
-      return UIImage(named: "xmarkTip", in: .module, with: nil)
     }
   }
-  
 }

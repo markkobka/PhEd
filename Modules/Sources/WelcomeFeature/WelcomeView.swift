@@ -20,12 +20,12 @@ final class WelcomeView: UIView {
   private lazy var titleLabel: UILabel = .init(
     frame: .zero
   ).apply {
-    $0.text = "Access Your Photos and Videos"
+    $0.text = "Разрешите доступ к вашей медиатеке"
     $0.font = .systemFont(ofSize: 20, weight: .semibold)
     $0.textAlignment = .center
     $0.textColor = .white
     $0.backgroundColor = .black
-    $0.numberOfLines = 1
+    $0.numberOfLines = 2
     $0.translatesAutoresizingMaskIntoConstraints = false
   }
 

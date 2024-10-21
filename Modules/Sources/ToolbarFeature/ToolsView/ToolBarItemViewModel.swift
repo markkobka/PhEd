@@ -16,22 +16,16 @@ protocol ToolBarItemViewModel {
 extension ToolbarState.Tool: ToolBarItemViewModel {
   var baseImage: UIImage? {
     switch tool {
-    case .brush:
+    case .pen:
       return UIImage(named: "BasePen", in: .module, with: nil)
     case .pencil:
       return UIImage(named: "BasePencil", in: .module, with: nil)
     case .marker:
       return UIImage(named: "BaseBrush", in: .module, with: nil)
-    case .neon:
-      return UIImage(named: "BaseNeon", in: .module, with: nil)
-    case .lasso:
-      return UIImage(named: "BaseLasso", in: .module, with: nil)
     case .eraser:
       switch variant {
       case .blur:
         return UIImage(named: "BaseBlurEraser", in: .module, with: nil)
-      case .object:
-        return UIImage(named: "BaseObjectEraser", in: .module, with: nil)
       default:
         return UIImage(named: "BaseEraser", in: .module, with: nil)
       }
@@ -44,16 +38,12 @@ extension ToolbarState.Tool: ToolBarItemViewModel {
   
   var tipImage: UIImage? {
     switch tool {
-    case .brush:
+    case .pen:
       return UIImage(named: "TipPen", in: .module, with: nil)
     case .pencil:
       return UIImage(named: "TipPencil", in: .module, with: nil)
     case .marker:
       return UIImage(named: "TipBrush", in: .module, with: nil)
-    case .neon:
-      return UIImage(named: "TipNeon", in: .module, with: nil)
-    case .lasso:
-      return nil
     case .eraser:
       return nil
     }
@@ -66,5 +56,4 @@ extension ToolbarState.Tool: ToolBarItemViewModel {
   var hSpacing: CGFloat {
     0.3
   }
-  
 }

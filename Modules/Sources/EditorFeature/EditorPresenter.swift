@@ -44,8 +44,8 @@ extension EditorPresenter: ToolbarDelegate {
     let tipType: TipType = toolbarTool.variant == .arrow ? .arrow : .default
     
     switch toolbarTool.tool {
-    case .brush:
-      view?.setTool(.brush(
+    case .pen:
+      view?.setTool(.pen(
         strokeSize: strokeSize,
         color: color,
         tipType: tipType
@@ -62,14 +62,6 @@ extension EditorPresenter: ToolbarDelegate {
         color: color,
         tipType: tipType
       ))
-    case .neon:
-      view?.setTool(.neon(
-        strokeSize: strokeSize,
-        color: color,
-        tipType: tipType
-      ))
-    case .lasso:
-      break
     case .eraser:
       switch toolbarTool.variant {
       case .eraser:

@@ -55,7 +55,6 @@ final class ToolBarItemView: UIView {
         
     layer.addSublayer(baseLayer)
     baseLayer.contents = viewModel.baseImage?.cgImage
-         
   }
   
   func update(with viewModel: ToolBarItemViewModel) {
@@ -113,5 +112,4 @@ final class ToolBarItemView: UIView {
   @objc private func tapGestureAction() {
     tapHanlder()
   }
-  
 }
